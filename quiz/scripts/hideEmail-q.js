@@ -5,7 +5,16 @@ const emails = ['mary@northeastern.edu', 'ari@khoury.northeastern.edu', 'jk_neu.
 window.onload = function hideEmail() {
     const list = document.getElementById('emails')
     list.innerHTML = '';
+
     for (const email of emails) {
-        // complete the loop
+        if (email.match(/^[a-z0-9_]+@(.+\.)*northeastern.edu$/)) {
+            console.log(email);
+            const atIndex = email.indexOf('@');
+            const maskedUsername = '*'.repeat(atIndex);
+            const domain = email.slice(atIndex);
+            const listItem = document.createElement('li');
+            listItem.textContent = maskedUsername + domain;
+            list.appendChild(listItem);
+        }
     }
 }
