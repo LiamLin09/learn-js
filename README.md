@@ -1,4 +1,5 @@
 # learn-js
 JavaScript tutorial repo
 
-### REPLACE WITH YOUR FULL NAME
+Nianlong Lin
+01312024
