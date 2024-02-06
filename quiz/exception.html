@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Error Handling with Array Map</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Handling with Array Map</title>
+  </head>
+  <body>
+    <h1>Error Handling with Array Map</h1>
 
-  <h1>Error Handling with Array Map</h1>
+    <label for="numbersInput">Enter numbers (comma-separated):</label>
+    <input type="text" id="numbersInput" placeholder="e.g., 4,9,-1,16,25" />
 
-  <label for="numbersInput">Enter numbers (comma-separated):</label>
-  <input type="text" id="numbersInput" placeholder="e.g., 4,9,-1,16,25">
+    <button onclick="calculateSquareRoots()">Calculate Square Roots</button>
 
-  <button onclick="calculateSquareRoots()">Calculate Square Roots</button>
+    <div id="result"></div>
 
-  <script>
-    function calculateSquareRoots() {
-      // Get the input value and convert it to an array of numbers
-      const inputElement = document.getElementById('numbersInput');
-      const numbersString = inputElement.value;
-      const numbers = numbersString.split(',').map(Number);
+    <script>
+      function calculateSquareRoots() {
+        // Get the input value and convert it to an array of numbers
+        const inputElement = document.getElementById("numbersInput");
+        const numbersString = inputElement.value;
+        const numbers = numbersString.split(",").map(Number);
 
-      // Using map to calculate the square root of each number
-      // Use Math.sqrt(number) to calculate sq root
-      const squareRoots = numbers.map(number => {
-        return 0
-    });
+        // Using map to calculate the square root of each number
+        // Use Math.sqrt(number) to calculate sq root
+        const squareRoots = numbers.map((number) => {
+          try {
+            if (number < 0) {
+              throw new Error("sq root of a negative number is not allowed!!");
+            }
+            return Math.sqrt(number);
+          } catch (err) {
+            console.error(`Error : ${err.message}`);
+            return NaN;
+          }
+        });
 
-      // Displaying the original and transformed arrays
-      console.log('Original Numbers Array:', numbers);
-      console.log('Square Roots Array:', squareRoots);
-    }
-  </script>
-
-</body>
+        // Displaying the original and transformed arrays
+        console.log("Original Numbers Array:", numbers);
+        console.log("Square Roots Array:", squareRoots);
+      }
+    </script>
+  </body>
 </html>
