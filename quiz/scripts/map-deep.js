@@ -6,7 +6,9 @@ const originalMatrix = [
   ];
   
   const newMatrix = originalMatrix.map((row) => {
-    return row.sort();
+    let rowCopy = Array.from(row);
+    return rowCopy.sort();
+    // return [...row].sort();
   });
   
   // Modifying the original matrix (changing the last element of the first row)
